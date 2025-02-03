@@ -1,9 +1,52 @@
-"use client"
+"use client";
+import Link from "next/link";
+import NavItem from "./navItem";
+import React, { useState } from "react";
+import * as LucideIcons from "lucide-react";
 
-export default function Navbar(){
-    return (
-        <div className="flex w-full h-16 items-center justify-center ">
-            this is Navbar
+const LEFT_LIST = [
+  { id: "home", text: "Home", href: "/", icon: "Home" },
+  { id: "mentors", text: "Mentors", href: "/mentors", icon: "Users" },
+  { id: "playground", text: "Playground", href: "/playground", icon: "Code" },
+];
+
+const RIGHT_LIST = [
+  { id: "about", text: "About Us", href: "/about", icon: "Info" },
+];
+
+export default function Navbar() {
+  return (
+    <div className="navbar flex w-full h-14 items-center  ">
+      <div className="logo mx-4">Logo</div>
+      <div className="mainbar flex w-full items-center justify-between">
+        <div className="leftnav flex items-center justify-around">
+          {LEFT_LIST.map((item) => {
+            const IconComponent = LucideIcons[item.icon] || null;
+            return (
+              <NavItem
+                href={item.href}
+                text={item.text}
+                icon={IconComponent ? <IconComponent size={18} /> : null}
+                key={item.id}
+              />
+            );
+          })}
         </div>
-    )
+        <div className="rightnav flex ">
+          {RIGHT_LIST.map((item) => {
+            const IconComponent = LucideIcons[item.icon] || null;
+            return (
+              <NavItem
+                href={item.href}
+                text={item.text}
+                icon={IconComponent ? <IconComponent size={18} /> : null}
+                key={item.id}
+              />
+            );
+          })}
+          <div className="profile px-4 flex items-center"> Profile</div>
+        </div>
+      </div>
+    </div>
+  );
 }
