@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import React from "react";
 import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 import Link from "next/link";
 
-export default function Card({ subject }) {
+export default function CardU({ subject }) {
   return (
     <CardContainer className="inter-var">
       <CardBody
@@ -13,56 +11,48 @@ export default function Card({ subject }) {
           bg-white
           relative
           group/card
-          dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]
-          dark:bg-neutral-950
-          dark:border-gray-500
-          border-gray-300
+          // dark:bg-neutral-950
           rounded-2xl
-          w-full h-[300px]       /* Square base size for mobile */
-          sm:w-[350px] sm:h-[350px]  /* Larger square for desktop */
-          md:w-[400px] md:h-[400px]  /* Even larger for medium screens */
-          p-6                   /* Increased padding */
-          animated-border
-          transition-all        /* Smooth size transition */
+          min-h-[300px]
+          min-w-[300px]      /* Reduced size */
+          sm:w-[250px] sm:h-[250px]  /* Smaller for desktop */
+          md:w-[300px] md:h-[300px]  /* Adjusted for medium screens */
+          p-4                   /* Adjusted padding */
+          border-4
+          border-gray-700
+          
         `}
       >
-        {/* Larger subject text */}
-        <CardItem
-          translateZ="50"
-          className="text-4xl font-extrabold text-neutral-600 dark:text-white" /* Increased text size */
-        >
-          {subject}
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-500 text-base max-w-xs mt-4 dark:text-neutral-300" /* Larger text */
-        >
-          Learn {subject} with the power of Artificial Intelligence
-        </CardItem>
-        {/* Adjusted image container */}
-        <CardItem translateZ="100" className="w-full mt-6 h-48">
+        {/* Subject text */}
+        <div className="min-h-[120px]">
+          <CardItem className="text-3xl  font-extrabold text-neutral-600 dark:text-white">
+            {subject}
+          </CardItem>
+          <CardItem
+            as="p"
+            className="text-neutral-500  text-sm max-w-xs mt-2 dark:text-neutral-300"
+          >
+            Learn {subject} with the power of Artificial Intelligence
+          </CardItem>
+        </div>
+        {/* Image container */}
+
+        <div>
           <Image
             src="https://i.pinimg.com/736x/87/5c/19/875c199c8f01559d31eb7009333ef81c.jpg"
-            height="1000"
-            width="1000"
-            className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl" /* Use full height */
+            height="500"
+            width="500"
+            className="h-[120px] pb-3 w-full object-cover rounded-xl"
             alt="thumbnail"
           />
-        </CardItem>
-        <div className="flex justify-between items-center mt-6">
-          <CardItem
-            translateZ={20}
-            target="__blank"
-            className="px-4 py-2 rounded-xl text-sm font-normal dark:text-white" /* Placeholder if needed */
-          ></CardItem>
-          <CardItem
-            translateZ={20}
+        </div>
+        <div className="flex justify-between items-center mt-4">
+          {/* <CardItem
             as="button"
-            className="animated-btn relative overflow-hidden px-4 py-2 rounded-xl bg-gray-700 dark:bg-gray-300 dark:text-gray-800 text-white text-sm font-bold"
+            className="animated-btn relative overflow-hidden px-3 py-1.5 rounded-xl bg-gray-700 dark:bg-gray-300 dark:text-gray-800 text-white text-sm font-bold"
           >
             Lets Study
-          </CardItem>
+          </CardItem> */}
         </div>
       </CardBody>
     </CardContainer>
