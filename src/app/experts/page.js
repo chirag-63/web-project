@@ -65,7 +65,7 @@ export default function Experts() {
           </p>
         </div> */}
       </div>
-      <div className="border-0 rounded-xl p-3 border-gray-200 dark:border-gray-700">
+      <div className="border-0 rounded-xl p-3 border-gray-200 dark:border-gray-700 px-10">
         <div className="space-y-8">
           <div className="space-y-4">
             <Card>
