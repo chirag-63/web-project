@@ -3,7 +3,7 @@ import Link from "next/link";
 import NavItem from "./navItem";
 import React, { useState } from "react";
 import * as LucideIcons from "lucide-react";
-import Profile from "@/app/navbar/page";
+import Profile from "@/app/profile/page";
 
 const LEFT_LIST = [
     { id: "home", text: "Home", href: "/", icon: "Home" },
