@@ -86,3 +86,25 @@ body {
     @apply bg-background text-foreground;
   }
 }
+/* Add the rotating border animation */
+/* In your global CSS or a component-specific CSS module */
+/* globals.css or any CSS file imported in your project */
+@keyframes borderAnimation {
+  0% {
+    border-color: #ff0080;
+  }
+  50% {
+    border-color: #00eaff;
+  }
+  100% {
+    border-color: #ff0080;
+  }
+}
+
+.animated-border {
+  /* Make sure the element has a border to animate */
+  border: 4px solid;
+  border-radius: 1rem; /* Adjust as needed */
+}
+/* Animated Button CSS */
+/* Animated Button CSS with Red Overlay */
