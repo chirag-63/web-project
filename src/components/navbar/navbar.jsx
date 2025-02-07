@@ -3,7 +3,7 @@ import Link from "next/link";
 import NavItem from "./navItem";
 import React, { useState } from "react";
 import * as LucideIcons from "lucide-react";
-import { SignedIn, UserButton, SignInButton, SignedOut } from "@clerk/nextjs";
+import Profile from "@/app/navbar/page";
 
 const LEFT_LIST = [
     { id: "home", text: "Home", href: "/", icon: "Home" },
@@ -33,7 +33,7 @@ export default function Navbar() {
                         );
                     })}
                 </div>
-                <div className="rightnav gap-5 mr-10 flex ">
+                <div className="rightnav gap-5 mr-10 flex items-center">
                     {RIGHT_LIST.map((item) => {
                         const IconComponent = LucideIcons[item.icon] || null;
                         return (
@@ -45,12 +45,7 @@ export default function Navbar() {
                             />
                         );
                     })}
-                    <SignedIn>
-                        <UserButton />
-                    </SignedIn>
-                    <SignedOut>
-                        <SignInButton />
-                    </SignedOut>
+                    <Profile/>
                 </div>
             </div>
         </div>
