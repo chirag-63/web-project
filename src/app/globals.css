@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Outer wrapper that displays the gradient border */
+  .gradient-border-wrapper {
+    position: relative;
+    border-radius: 1rem; /* Adjust to match your inner card’s rounding */
+    overflow: hidden;
+    /* Increase padding to reveal a thicker border */
+    padding: 4px;
+  }
+  .gradient-border-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cover the entire wrapper */
+    pointer-events: none;
+    z-index: -1; /* Ensure this sits behind the inner card */
+    border-radius: inherit;
+    /* Use a gradient that transitions from dark zinc to white and back */
+    background: linear-gradient(
+      45deg,
+      #52525b 0%,
+      #6b6b70 30%,
+      #ffffff 50%,
+      #6b6b70 70%,
+      #52525b 100%
+    );
+    background-size: 200% 200%;
+    background-position: var(--mouse-x, 50%) var(--mouse-y, 50%);
+    transition: background-position 0.1s ease-out;
+  }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -103,7 +134,7 @@ body {
 
 .animated-border {
   /* Make sure the element has a border to animate */
-  border: 4px solid;
+  border: 2px solid;
   border-radius: 1rem; /* Adjust as needed */
 }
 /* Animated Button CSS */
