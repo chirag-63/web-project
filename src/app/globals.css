@@ -3,22 +3,21 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* Outer wrapper that displays the gradient border */
   .gradient-border-wrapper {
     position: relative;
-    border-radius: 1rem; /* Adjust to match your inner card’s rounding */
+    border-radius: 1rem;
     overflow: hidden;
-    /* Increase padding to reveal a thicker border */
+
     padding: 4px;
   }
   .gradient-border-wrapper::after {
     content: "";
     position: absolute;
-    inset: 0; /* Cover the entire wrapper */
+    inset: 0;
     pointer-events: none;
-    z-index: -1; /* Ensure this sits behind the inner card */
+    z-index: -1;
     border-radius: inherit;
-    /* Use a gradient that transitions from dark zinc to white and back */
+
     background: linear-gradient(
       45deg,
       #52525b 0%,
