@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { CardContent, CardHeader, Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar } from "@/components/ui/avatar";
+import Footer from "@/components/footer/footer";
 export default function Experts() {
   const cards = [
     "Operating System",
@@ -76,7 +77,7 @@ export default function Experts() {
           </p>
         </div> */}
       </div>
-      <div className="border-0 rounded-xl p-3 border-gray-200 dark:border-gray-700 px-10">
+      {/* <div className="border-0 rounded-xl p-3 border-gray-200 dark:border-gray-700 px-10">
         <div className="space-y-8">
           <div className="space-y-4">
             <Card>
@@ -109,7 +110,8 @@ export default function Experts() {
             </Card>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Footer />
     </div>
   );
 }
