@@ -20,6 +20,18 @@ export default function Experts() {
     "Network Programming",
     "Compiler Design",
     "Web Technology",
+    "Data Structures",
+    "Artificial Intelligence",
+    "Database Management",
+    "Cloud Computing",
+    "Machine Learning",
+    "OOPS",
+    "DBMS",
+    "Java",
+    "C++",
+    "Python",
+    "JavaScript",
+    "SQL",
   ];
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCards, setFilteredCards] = useState(cards);
@@ -33,7 +45,6 @@ export default function Experts() {
 
   return (
     <div>
-      <Navbar />
       <div className="min-h-screen flex flex-col  items-center justify-around mx-5 ">
         {/* Cards Container */}
         <div className="w-[350px] mt-2 flex items-center">
