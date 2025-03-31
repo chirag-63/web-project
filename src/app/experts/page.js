@@ -11,6 +11,7 @@ import { CardContent, CardHeader, Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar } from "@/components/ui/avatar";
 import Footer from "@/components/footer/footer";
+import { ContactForm } from "./requestSubject";
 export default function Experts() {
   const cards = [
     "Operating System",
@@ -111,6 +112,7 @@ export default function Experts() {
           </div>
         </div>
       </div> */}
+    <ContactForm />
       <Footer />
     </div>
   );
