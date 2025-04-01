@@ -6,10 +6,10 @@ import { InfiniteMovingCardsDemo } from "@/components/testimonials";
 export default function Home() {
   return (
     <div>
-      <Navbar/>
-      <HeroParallaxDemo/>
-      <FeaturesSectionDemo/>
-      <InfiniteMovingCardsDemo/>
+      <Navbar />
+      <HeroParallaxDemo />
+      <FeaturesSectionDemo />
+      <InfiniteMovingCardsDemo />
     </div>
   );
 }
