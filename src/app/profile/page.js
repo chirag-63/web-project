@@ -7,7 +7,7 @@ export default function Profile() {
         <UserButton />
       </SignedIn>
       <SignedOut>
-        <SignInButton />
+        <SignInButton suppressHydrationWarning />
       </SignedOut>
     </div>
   );
