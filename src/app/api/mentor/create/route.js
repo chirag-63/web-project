@@ -6,11 +6,12 @@ import Bot from "@/models/botSchema";
 
 export async function POST(req, res) {
   try {
-    const { subject, description } = await req.json();
+    const { subject, description, specialization } = await req.json();
 
     const parsedData = createMentorSchema.safeParse({
       subject,
       description,
+      specialization
     });
 
     if (!parsedData.success) {
@@ -38,6 +39,7 @@ export async function POST(req, res) {
     const mentor = await Bot.create({
       subject: parsedData.data.subject,
       description: parsedData.data.description,
+      specialization: parsedData.data.specialization
     });
 
     return NextResponse.json(mentor, { status: 201 });
