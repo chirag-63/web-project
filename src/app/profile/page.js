@@ -2,8 +2,8 @@ import { SignedIn, UserButton, SignInButton, SignedOut } from "@clerk/nextjs";
 
 export default function Profile() {
   return (
-    <div>
-      <SignedIn>
+    <div suppressHydrationWarning>
+      <SignedIn suppressHydrationWarning>
         <UserButton />
       </SignedIn>
       <SignedOut>
