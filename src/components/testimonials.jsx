@@ -5,41 +5,55 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
   return (
-    (<div
-      className="h-[40rem] rounded-md flex flex-col antialiased bg-background dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-      <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
-    </div>)
+    <div className="h-[30rem] rounded-md flex flex-col antialiased bg-background dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden py-8">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
+        What Our Students Say
+      </h2>
+      <InfiniteMovingCards 
+        items={testimonials} 
+        direction="right" 
+        speed="slow" 
+        className="px-4"
+      />
+    </div>
   );
 }
 
 const testimonials = [
   {
     quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
+      "CS Mastery helped me crack my Google interview! The AI explanations for complex algorithms were clearer than any professor I've had. Now I'm working at my dream company in Bangalore.",
+    name: "Rahul Sharma",
+    title: "Software Engineer at Google",
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
+      "As a working professional, I needed flexible learning. CS Mastery's 24/7 AI tutors helped me master DBMS concepts at my own pace. I got promoted to Senior Developer within 6 months!",
+    name: "Priya Patel",
+    title: "Senior Developer, Mumbai",
   },
   {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
-  },
-  {
-    quote:
-      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
+    quote: 
+      "The step-by-step OOP explanations saved my semester! I went from failing to topping my class at IIT Delhi. The AI tutor breaks down concepts better than any textbook.",
+    name: "Arjun Gupta",
+    title: "Computer Science Student",
   },
   {
     quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
+      "Being from a non-CS background, I struggled with DSA. CS Mastery's visual learning approach made complex topics click instantly. Now I confidently solve LeetCode problems daily!",
+    name: "Neha Joshi",
+    title: "Career Changer, Pune",
+  },
+  {
+    quote:
+      "The AI doubt solver is magical! It understood my messy questions about OS concepts and gave perfect answers. My GATE preparation became 10x more efficient with CS Mastery.",
+    name: "Vikram Singh",
+    title: "GATE Aspirant",
+  },
+  {
+    quote:
+      "As a college professor, I recommend CS Mastery to all my students. The platform bridges the gap between academic theory and real-world implementation beautifully.",
+    name: "Dr. Ananya Deshpande",
+    title: "Professor, IIIT Hyderabad",
   },
 ];
