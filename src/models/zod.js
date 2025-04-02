@@ -11,6 +11,16 @@ export const createMentorSchema = z.object({
     .max(50, {
       message: "Subject must be less than or equal to 50 char",
     }),
+  specialization: z
+    .string({
+      required_error: "Specialization is required",
+      invalid_type_error: "Specialization must be a string",
+    })
+    .trim()
+    .min(1, { message: "Specialization cannot be an empty" })
+    .max(50, {
+      message: "Specialization must be less than or equal to 50 char",
+    }),
 
   description: z
     .string({
