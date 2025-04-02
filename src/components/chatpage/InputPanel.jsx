@@ -1,40 +1,42 @@
-'use client'
+"use client";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Send } from "lucide-react";
 
-export const InputPanel = ({onSendMessage}) => {
-    const [query, setQuery] = useState("");
+export const InputPanel = ({ onSendMessage }) => {
+  const [query, setQuery] = useState("");
 
-    const handleSend = () => {
-        if (query.trim()) {
-            onSendMessage(query);
-            setQuery("");
-        }
-    };
+  const handleSend = () => {
+    if (query.trim()) {
+      onSendMessage(query);
+      setQuery("");
+    }
+  };
 
-    return (
-        <div className="fixed flex justify-center h-28 bottom-0 transform bg-background w-full">
-            <div className="flex items-center w-1/2 mb-5 bg-secondary rounded-2xl ">
-                <Textarea
-                    className="h-full w-full resize-none no-scrollbar scroll-smooth pl-5 pr-28 py-4 outline-none border-none border-transparent focus:outline-none focus:border-none shadow-none"
-                    placeholder="ask your question"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={(e)=>{
-                        if(e.key === 'Enter'){
-                            e.preventDefault();
-                            handleSend();
-                        }
-                    }}
-                />
-                <Button
-                    className="rounded-full -ml-24 hover:cursor-pointer"
-                    onClick={handleSend}
-                >
-                    Send
-                </Button>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="max-w-4xl mx-auto w-full">
+      <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+        <Textarea
+          className="flex-1 min-h-[60px] max-h-[120px] resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent"
+          placeholder="Ask your question about the subject..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handleSend();
+            }
+          }}
+        />
+        <Button
+          className="h-10 w-10 rounded-full mr-2 bg-blue-600 hover:bg-blue-700 text-white"
+          onClick={handleSend}
+          disabled={!query.trim()}
+        >
+          <Send className="h-5 w-5" />
+        </Button>
+      </div>
+    </div>
+  );
+};

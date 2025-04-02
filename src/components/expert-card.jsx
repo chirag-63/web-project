@@ -1,75 +1,140 @@
-import Image from "next/image";
-import React, { useRef } from "react";
-import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  BookOpen,
+  Brain,
+  Code2,
+  Database,
+  Network,
+  Server,
+  Shield,
+  Smartphone,
+  Webhook,
+} from "lucide-react";
 
-export default function CardU({ subject }) {
-  // Reference to the outer wrapper element for updating CSS custom properties
-  const borderWrapperRef = useRef(null);
+const subjectIcons = {
+  "Data Structures": <Database className="w-8 h-8" />,
+  Algorithms: <Brain className="w-8 h-8" />,
+  "Computer Networks": <Network className="w-8 h-8" />,
+  "Operating Systems": <Server className="w-8 h-8" />,
+  "Web Development": <Webhook className="w-8 h-8" />,
+  "Mobile Development": <Smartphone className="w-8 h-8" />,
+  Cybersecurity: <Shield className="w-8 h-8" />,
+  "Programming Languages": <Code2 className="w-8 h-8" />,
+  "Software Engineering": <BookOpen className="w-8 h-8" />,
+};
 
-  // Update the gradient’s background position based on the mouse location
+const ExpertCard = ({ subject, description }) => {
+  const cardRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-100, 100], [30, -30]);
+  const rotateY = useTransform(x, [-100, 100], [-30, 30]);
+
   const handleMouseMove = (e) => {
-    if (!borderWrapperRef.current) return;
-    const rect = borderWrapperRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    borderWrapperRef.current.style.setProperty("--mouse-x", `${x}%`);
-    borderWrapperRef.current.style.setProperty("--mouse-y", `${y}%`);
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const rotateXValue = (e.clientY - centerY) / 10;
+    const rotateYValue = (e.clientX - centerX) / 10;
+
+    x.set(rotateYValue);
+    y.set(rotateXValue);
   };
 
-  // Reset the gradient position when the mouse leaves the card
   const handleMouseLeave = () => {
-    if (!borderWrapperRef.current) return;
-    borderWrapperRef.current.style.setProperty("--mouse-x", "50%");
-    borderWrapperRef.current.style.setProperty("--mouse-y", "50%");
+    x.set(0);
+    y.set(0);
+    setIsHovered(false);
   };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const subjectSlug = subject.toLowerCase().replace(/\s+/g, "-");
 
   return (
-    <CardContainer className="inter-var">
-      {/* Wrap the card body in the gradient border wrapper */}
-      <div
-        ref={borderWrapperRef}
-        className="gradient-border-wrapper"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+    <motion.div
+      ref={cardRef}
+      className="relative w-full h-[300px] perspective-1000"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+    >
+      <motion.div
+        className="gradient-border-wrapper relative w-full h-full rounded-2xl p-[1px]"
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+          transition: "transform 0.1s ease-out",
+        }}
       >
-        <CardBody
-          className={`
-            bg-zinc-900 
-            relative z-10  /* Ensure the content sits above the pseudo-element */
-            group/card
-            rounded-2xl
-            min-h-[300px]
-            min-w-[300px]
-            sm:w-[250px] sm:h-[250px]
-            md:w-[300px] md:h-[300px]
-            p-4
-          `}
-        >
-          {/* Subject text */}
-          <div className="min-h-[120px]">
-            <CardItem className="text-3xl font-extrabold text-zinc-300">
-              {subject}
-            </CardItem>
-            <CardItem as="p" className="text-zinc-400 text-sm max-w-xs mt-2">
-              Learn {subject} with the power of Artificial Intelligence
-            </CardItem>
+        <div className="relative w-full h-full bg-white dark:bg-gray-900 rounded-2xl p-6 flex flex-col justify-between overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_0%,transparent_100%)]" />
           </div>
-          {/* Image container */}
-          <div>
-            <Image
-              src="https://i.pinimg.com/736x/87/5c/19/875c199c8f01559d31eb7009333ef81c.jpg"
-              height="500"
-              width="500"
-              className="h-[120px] pb-3 w-full object-cover rounded-xl"
-              alt="thumbnail"
-            />
+
+          {/* Content */}
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                {subjectIcons[subject]}
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                {subject}
+              </h3>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              {description}
+            </p>
           </div>
-          <div className="flex justify-between items-center mt-4">
-            {/* Optionally add interactive elements */}
+
+          {/* Bottom Section */}
+          <div className="relative z-10 mt-4">
+            <Link
+              href={`/chat/${subjectSlug}`}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors group"
+            >
+              <span>Start Learning</span>
+              <motion.span
+                animate={{ x: isHovered ? 5 : 0 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                →
+              </motion.span>
+            </Link>
           </div>
-        </CardBody>
-      </div>
-    </CardContainer>
+
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl" />
+
+          {/* Bubble Effect */}
+          <motion.div
+            className="bubble absolute"
+            animate={{
+              scale: isHovered ? [1, 1.2, 1] : 1,
+              opacity: isHovered ? [0.5, 0.8, 0.5] : 0,
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
   );
-}
+};
+
+export default ExpertCard;

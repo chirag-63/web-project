@@ -1,15 +1,25 @@
 import mongoose from "mongoose";
 
 const connectToDB = async () => {
-  if (process.env.DB_URL) {
-    try {
-      await mongoose.connect(process.env.DB_URL);
-      console.log("Database connected");
-    } catch (error) {
-      console.error("Database connection error:", error);
+  if (!process.env.DB_URL) {
+    throw new Error("DB_URL environment variable is not set");
+  }
+
+  try {
+    if (mongoose.connection.readyState === 1) {
+      return mongoose.connection;
     }
-  } else {
-    console.error("Cant connect to database, DB_URL not set");
+
+    await mongoose.connect(process.env.DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("Database connected successfully");
+    return mongoose.connection;
+  } catch (error) {
+    console.error("Database connection error:", error);
+    throw error;
   }
 };
 

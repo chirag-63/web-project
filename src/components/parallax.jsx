@@ -5,72 +5,71 @@ import { HeroParallax } from "./ui/hero-parallax";
 export function HeroParallaxDemo() {
   return <HeroParallax products={products} />;
 }
+
 export const products = [
   {
-    title: "Moonbeam",
-    // link: "https://gomoonbeam.com",
+    title: "Object Oriented Programming",
+    link: "/chat/oop",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
   },
   {
-    title: "Cursor",
-    // link: "https://cursor.so",
+    title: "Database Management Systems",
+    link: "/chat/dbms",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/cursor.png",
   },
   {
-    title: "Rogue",
-    // link: "https://userogue.com",
+    title: "Data Structures & Algorithms",
+    link: "/chat/dsa",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/rogue.png",
   },
-
   {
-    title: "Editorially",
-    // link: "https://editorially.org",
+    title: "Computer Networks",
+    link: "/chat/networks",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/editorially.png",
   },
   {
-    title: "Editrix AI",
-    // link: "https://editrix.ai",
+    title: "Operating Systems",
+    link: "/chat/os",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/editrix.png",
   },
   {
-    title: "Pixel Perfect",
-    // link: "https://app.pixelperfect.quest",
+    title: "Software Engineering",
+    link: "/chat/software-engineering",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
   },
-
   {
-    title: "Algochurn",
-    // link: "https://algochurn.com",
+    title: "Machine Learning",
+    link: "/chat/machine-learning",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
   },
   {
-    title: "Aceternity UI",
-    // link: "https://ui.aceternity.com",
+    title: "Artificial Intelligence",
+    link: "/chat/ai",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
   },
   {
-    title: "Tailwind Master Kit",
-    // link: "https://tailwindmasterkit.com",
+    title: "Web Development",
+    link: "/chat/web-development",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
   },
   {
-    title: "SmartBridge",
-    // link: "https://smartbridgetech.com",
+    title: "Mobile Development",
+    link: "/chat/mobile-development",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
   },
   {
-    title: "Renderwork Studio",
-    // link: "https://renderwork.studio",
+    title: "Cloud Computing",
+    link: "/chat/cloud-computing",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
   },

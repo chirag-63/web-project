@@ -96,29 +96,28 @@ export const Header = () => {
 
 export const ProductCard = ({ product, translate }) => {
   return (
-    <motion.div
-      style={{
-        x: translate,
-      }}
-      whileHover={{
-        y: -20,
-      }}
-      key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
-    >
-      <Link href={"/"} className="block group-hover/product:shadow-2xl ">
+    <Link href={product.link} className="group">
+      <motion.div
+        style={{
+          x: translate,
+        }}
+        className="group/item relative h-96 w-[30rem] cursor-pointer"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 className="text-white text-2xl font-bold text-center px-4">
+            {product.title}
+          </h3>
+        </div>
         <Image
           src={product.thumbnail}
           height="600"
           width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
+          className="object-cover absolute inset-0 w-full h-full rounded-lg"
           alt={product.title}
         />
-      </Link>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-        {product.title}
-      </h2>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
