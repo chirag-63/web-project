@@ -40,14 +40,14 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq-section" className="w-full py-12 md:pb-20 lg:py-28">
+    <section id="faq-section" className="w-full pt-12 pb-40">
       <div className="container px-4 md:px-8 lg:px-12">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-8 md:space-y-0">
-          <div className="md:w-1/3 text-left flex-none">
+        <div className="flex flex-col items-start md:items-center justify-between space-y-8 md:space-y-0">
+          <div className="text-left mb-12 flex-none">
             <div className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
               Frequently Asked Questions
             </div>
-            <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2 max-w-xs">
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
               Find answers to common questions about our platform and services.
             </p>
           </div>

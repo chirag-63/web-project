@@ -55,7 +55,7 @@ export function FeaturesSectionDemo() {
   ];
 
   return (
-    <section className="relative py-12 md:py-16 overflow-hidden px-4 sm:px-6 lg:px-8">
+    <section id="about-us" className="relative py-20 overflow-hidden px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-12">
           <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">

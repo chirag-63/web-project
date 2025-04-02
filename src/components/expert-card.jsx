@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 import Link from "next/link";
 
-export default function CardU({ subject }) {
+export default function CardU({ subject, description, image }) {
   // Reference to the outer wrapper element for updating CSS custom properties
   const borderWrapperRef = useRef(null);
 
@@ -52,13 +52,13 @@ export default function CardU({ subject }) {
               {subject}
             </CardItem>
             <CardItem as="p" className="text-zinc-400 text-sm max-w-xs mt-2">
-              Learn {subject} with the power of Artificial Intelligence
+              {description}
             </CardItem>
           </div>
           {/* Image container */}
           <div>
             <Image
-              src="https://i.pinimg.com/736x/87/5c/19/875c199c8f01559d31eb7009333ef81c.jpg"
+              src={image}
               height="500"
               width="500"
               className="h-[120px] pb-3 w-full object-cover rounded-xl"
