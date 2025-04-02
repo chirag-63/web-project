@@ -16,24 +16,16 @@ export default function Experts() {
   const cards = [
     "Operating System",
     "Computer Networks",
-    "Computer Architecture",
     "System Design",
     "Algorithms",
     "Network Programming",
     "Compiler Design",
     "Web Technology",
     "Data Structures",
-    "Artificial Intelligence",
-    "Database Management",
     "Cloud Computing",
     "Machine Learning",
     "OOPS",
     "DBMS",
-    "Java",
-    "C++",
-    "Python",
-    "JavaScript",
-    "SQL",
   ];
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCards, setFilteredCards] = useState(cards);
@@ -49,7 +41,7 @@ export default function Experts() {
     <div>
       <div className="min-h-screen flex flex-col  items-center justify-around mx-5 ">
         {/* Cards Container */}
-        <div className="w-[350px] mt-10 flex items-center">
+        <div className="w-[350px] my-10 flex items-center">
           <Search className=" mr-[-30px] h-[30px] text-gray-500 " />
           <Input
             type="text"
@@ -61,7 +53,7 @@ export default function Experts() {
         </div>
         <div className="flex flex-wrap justify-center gap-10 min-h-screen">
           {filteredCards.map((subject, index) => (
-            <CardU subject={subject} key={index} description={"hello"} image={"https://i.pinimg.com/736x/87/5c/19/875c199c8f01559d31eb7009333ef81c.jpg"} />
+            <CardU subject={subject} key={index} description={`Learn about ${subject}`} image={"https://i.pinimg.com/736x/87/5c/19/875c199c8f01559d31eb7009333ef81c.jpg"} />
           ))}
         </div>
 

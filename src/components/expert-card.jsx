@@ -24,17 +24,20 @@ export default function CardU({ subject, description, image }) {
     borderWrapperRef.current.style.setProperty("--mouse-y", "50%");
   };
 
+  const subjectWithNoSpaces = subject.replace(/\s+/g, "");
+
   return (
     <CardContainer className="inter-var">
       {/* Wrap the card body in the gradient border wrapper */}
-      <div
-        ref={borderWrapperRef}
-        className="gradient-border-wrapper"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <CardBody
-          className={`
+      <Link href={`/chat/${subjectWithNoSpaces}`}>
+        <div
+          ref={borderWrapperRef}
+          className="gradient-border-wrapper"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <CardBody
+            className={`
             bg-zinc-900 
             relative z-10  /* Ensure the content sits above the pseudo-element */
             group/card
@@ -45,31 +48,32 @@ export default function CardU({ subject, description, image }) {
             md:w-[300px] md:h-[300px]
             p-4
           `}
-        >
-          {/* Subject text */}
-          <div className="min-h-[120px]">
-            <CardItem className="text-3xl font-extrabold text-zinc-300">
-              {subject}
-            </CardItem>
-            <CardItem as="p" className="text-zinc-400 text-sm max-w-xs mt-2">
-              {description}
-            </CardItem>
-          </div>
-          {/* Image container */}
-          <div>
-            <Image
-              src={image}
-              height="500"
-              width="500"
-              className="h-[120px] pb-3 w-full object-cover rounded-xl"
-              alt="thumbnail"
-            />
-          </div>
-          <div className="flex justify-between items-center mt-4">
-            {/* Optionally add interactive elements */}
-          </div>
-        </CardBody>
-      </div>
+          >
+            {/* Subject text */}
+            <div className="min-h-[120px]">
+              <CardItem className="text-3xl font-extrabold text-zinc-300">
+                {subject}
+              </CardItem>
+              <CardItem as="p" className="text-zinc-400 text-sm max-w-xs mt-2">
+                {description}
+              </CardItem>
+            </div>
+            {/* Image container */}
+            <div>
+              <Image
+                src={image}
+                height="500"
+                width="500"
+                className="h-[120px] pb-3 w-full object-cover rounded-xl"
+                alt="thumbnail"
+              />
+            </div>
+            <div className="flex justify-between items-center mt-4">
+              {/* Optionally add interactive elements */}
+            </div>
+          </CardBody>
+        </div>
+      </Link>
     </CardContainer>
   );
 }

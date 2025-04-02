@@ -12,33 +12,79 @@ import {
     SidebarMenuItem,
     SidebarGroupAction
 } from "@/components/ui/sidebar"
-import { SquarePen } from "lucide-react"
+import { SquarePen, LogOut } from "lucide-react"
+import Link from "next/link";
 
 const items = [
     {
-        title: "chat 1",
-        url: "/chat/subject1",
-        icon: Home,
-    },
-    {
-        title: "chat 2",
-        url: "/chat/subject2",
+        title: "Operating System",
+        url: "/chat/Operating System",
         icon: Inbox,
     },
     {
-        title: "chat 3",
-        url: "/chat/subject3",
+        title: "Computer Networks",
+        url: "/chat/ComputerNetworks",
+        icon: Inbox,
+    },
+    {
+        title: "System Design",
+        url: "/chat/SystemDesign",
+        icon: Calendar,
+    },
+    {
+        title: "Algorithms",
+        url: "/chat/Algorithms",
+        icon: Calendar,
+    },
+    {
+        title: "Network Programming",
+        url: "/chat/NetworkProgramming",
+        icon: Calendar,
+    },
+    {
+        title: "Compiler Design",
+        url: "/chat/CompilerDesign",
+        icon: Calendar,
+    },
+    {
+        title: "Web Technology",
+        url: "/chat/WebTechnology",
+        icon: Calendar,
+    },
+    {
+        title: "Data Structures",
+        url: "/chat/DataStructures",
+        icon: Calendar,
+    },
+    {
+        title: "Cloud Computing",
+        url: "/chat/CloudComputing",
+        icon: Calendar,
+    },
+    {
+        title: "Machine Learning",
+        url: "/chat/MachineLearning",
+        icon: Calendar,
+    },
+    {
+        title: "OOPS",
+        url: "/chat/oops",
+        icon: Calendar,
+    },
+    {
+        title: "DBMS",
+        url: "/chat/dbms",
         icon: Calendar,
     },
 ];
 
 export function AppSidebar({ subject }) {
     const router = useRouter();
-    
+
     const handleNewChat = () => {
         const path = window.location.pathname;
         const len = path.length;
-        router.push(`/chat/${path.slice(6,len)}`);
+        router.push(`/chat/${path.slice(6, len)}`);
     };
 
     return (
@@ -46,14 +92,16 @@ export function AppSidebar({ subject }) {
             <SidebarContent>
                 <SidebarGroup>
                     <div className="my-2 flex items-center justify-between mx-2">
-                        <SidebarGroupLabel className="">Chat History</SidebarGroupLabel>
-                        <SidebarGroupAction
-                            className="w-10 h-10 "
-                            title="New Chat"
-                            onClick={handleNewChat}
-                        >
-                            <SquarePen className="h-full" />
-                        </SidebarGroupAction>
+                        <SidebarGroupLabel className="">Mentors</SidebarGroupLabel>
+                        <Link href={'/experts'}>
+                            <SidebarGroupAction
+                                className="w-10 h-10 "
+                                title="Home"
+                                onClick={handleNewChat}
+                            >
+                                <LogOut className="h-full" />
+                            </SidebarGroupAction>
+                        </Link>
                     </div>
                     <SidebarGroupContent>
                         <SidebarMenu className="mt-2">
